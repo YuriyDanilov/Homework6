@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+
+    //Задача 1
+
+    let arr = ["one", "two", "three"];
+    //let arr = ["one", "one", "one"];
+
+
+    function map(arr, mapper) {
+        let result = [];
+        for (const elem of arr) {
+            result.push(mapper(elem));
+        }
+        return result;
+    };
+
+    // first letter up
+
+    function mapper(elem) {
+        return elem[0].toUpperCase() + elem.slice(1);
+    };
+    console.log(map(arr, mapper));
+
+    let value = "one";
+    let value2 = "rrr";
+
+
+    function some(arr, predicate) {
+        for (const elem of arr)
+            return predicate(elem);
+    }
+
+    console.log(some(arr, elem => elem === value));
+    console.log(some(arr, elem => elem === value2));
+
+
+    function every(arr) {
+        for (const elem of arr) {
+            if (elem !== value)
+                return false;
+        }
+        return true;
+    };
+
+    function everyLength(arr) {
+        for (const elem of arr) {
+            if (elem.length !== 3)
+                return false;
+        }
+        return true;
+    };
+
+
+    console.log(every(arr));
+    console.log(everyLength(arr));
+
+    //Задача 2
+
+    let user = [
+        {
+            name: "Оксана",
+            patronymic: "Олеговна",
+            surname: "Оберемок",
+        },
+        {
+            name: "Артем",
+            patronymic: "Николаевич",
+            surname: "Алєщенко",
+        },
+        {
+            name: "Любовь",
+            patronymic: "Петровна",
+            surname: "Рогоза",
+        },
+        {
+            name: "Ильяс",
+            patronymic: "Сергеевич",
+            surname: "Кдыров",
+        },
+    ];
+
+    //**********a)
+
+    let userList = user.filter(e => e.name.charAt(0) === e.surname.charAt(0));
+    console.log(userList);
+
+    //*************b)
+
+    let arr2 = user.map(e => e.surname + " " + e.name[0] + "." + e.patronymic[0] + ".");
+    console.log(arr2);
+
+
+    //***********
+    let contacts = [
+        {
+            name: "Оксана Оберемок",
+            phone: "050-534-56-79",
+        },
+        {
+            name: "Артем Алєщенко",
+            phone: "050-654-87-32",
+        },
+        {
+            name: "Любовь Рогоза",
+            phone: "937099-113-70-11",
+        },
+        {
+            name: "Жди Меня",
+            phone: "937-99-92",
+        },
+    ];
+    let val = "937";
+    let tel = "937-99-92";
+
+    //***********c)
+
+    let userList2 = contacts.filter(e => e.phone.startsWith(val));
+    console.log(userList2);
+
+    //************d)
+
+    let telNum = contacts.some(e => e.phone === tel);
+    console.log(telNum);
+
+</script>
+
+
+<body>
+
+</body>
+
+</html>
